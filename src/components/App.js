@@ -20,6 +20,24 @@ const App = () => {
         setProducts([...products, product]);
     };
 
+    const addToCart = product => {
+        if (cart.length) {
+            const newCart = [...cart];
+            const foundIndex = newCart.findIndex(item => item.id === product.id);
+            if (foundIndex >= 0) {
+                newCart[foundIndex]['qty'] += 1;
+            } else {
+                product.qty += 1;
+                newCart.push(product);
+            }
+            setCart(newCart);
+        } else {
+            product.qty = 1;
+            const newCart = [product];
+            setCart(newCart);
+        }
+    };
+
     return (
         <Router>
             <CartProvider value={cart}>
@@ -27,7 +45,7 @@ const App = () => {
                     <div className="container">
                         <Header/>
                         <Route exact path="/">
-                            <Products/>
+                            <Products addToCart={addToCart}/>
                         </Route>
                         <Route path="/add-product">
                             <AddProduct addProduct={addProduct}/>
