@@ -1,8 +1,6 @@
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 
-import './add-product.css';
-
 const AddProduct = ({addProduct}) => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);

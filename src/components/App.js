@@ -1,16 +1,15 @@
 import {useState} from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
-import Header from "../header/header";
-import AddProduct from "../add-product/add-product";
-import Products from "../products/products";
-import Cart from "../cart/cart";
+import Header from "./header";
+import AddProduct from "./add-product";
+import Products from "./products";
+import Cart from "./cart";
 
-import {CartProvider} from "../../contexts/CartContext";
-import {ProductsProvider} from "../../contexts/ProductsContext";
+import {CartProvider} from "../contexts/CartContext";
+import {ProductsProvider} from "../contexts/ProductsContext";
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './App.css';
 
 const App = () => {
     const [cart, setCart] = useState([]);
