@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
 import Header from "./header";
@@ -10,10 +9,11 @@ import {CartProvider} from "../contexts/CartContext";
 import {ProductsProvider} from "../contexts/ProductsContext";
 
 import 'bootstrap/dist/css/bootstrap.css';
+import {useLocalStorage} from "../util";
 
 const App = () => {
-    const [cart, setCart] = useState([]);
-    const [products, setProducts] = useState([]);
+    const [cart, setCart] = useLocalStorage('cart',[]);
+    const [products, setProducts] = useLocalStorage('products', []);
 
     const addProduct = product => {
         product.id = products.length + 1;
