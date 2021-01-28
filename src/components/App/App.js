@@ -16,6 +16,11 @@ const App = () => {
     const [cart, setCart] = useState([]);
     const [products, setProducts] = useState([]);
 
+    const addProduct = product => {
+        product.id = products.length + 1;
+        setProducts([...products, product]);
+    };
+
     return (
         <Router>
             <CartProvider value={cart}>
@@ -26,7 +31,7 @@ const App = () => {
                             <Products/>
                         </Route>
                         <Route path="/add-product">
-                            <AddProduct/>
+                            <AddProduct addProduct={addProduct}/>
                         </Route>
                         <Route path="/cart">
                             <Cart/>
