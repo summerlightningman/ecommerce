@@ -25,7 +25,7 @@ const AddProduct = ({addProduct}) => {
             </div>
             <div className="form-group">
                 <label>Price</label>
-                <input type="text" onChange={e => setPrice(e.target.value)} className="form-control"/>
+                <input type="number" onChange={e => setPrice(e.target.value)} className="form-control"/>
             </div>
             <div className="form-group">
                 <label>Description</label>

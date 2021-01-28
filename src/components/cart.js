@@ -8,7 +8,6 @@ const Cart = ({addToCart, removeFromCart}) => {
     const handleClickAdd = item => () => addToCart(item);
     const handleClickRemove = item => () => removeFromCart(item);
 
-
     if (!cart.length)
         return (
             <h2>Your cart is empty. Add some <Link to="/">products</Link> first</h2>
