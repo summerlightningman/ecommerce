@@ -38,6 +38,15 @@ const App = () => {
         }
     };
 
+    const removeFromCart = product => {
+        const newCart = [...cart];
+        const foundIndex = newCart.findIndex(item => item.id === product.id);
+        newCart[foundIndex]['qty'] -= 1;
+        if (newCart[foundIndex]['qty'] === 0)
+            newCart.splice(foundIndex, 1);
+        setCart(newCart);
+    }
+
     return (
         <Router>
             <CartProvider value={cart}>
@@ -51,7 +60,7 @@ const App = () => {
                             <AddProduct addProduct={addProduct}/>
                         </Route>
                         <Route path="/cart">
-                            <Cart/>
+                            <Cart addToCart={addToCart} removeFromCart={removeFromCart}/>
                         </Route>
                     </div>
                 </ProductsProvider>
