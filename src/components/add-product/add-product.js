@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 import './add-product.css';
 
@@ -8,15 +9,36 @@ const AddProduct = ({addProduct}) => {
     const [description, setDescription] = useState('');
     const [url, setUrl] = useState('');
 
+    const history = useHistory();
+
     const handleSubmit = e => {
         e.preventDefault();
         const product = {name, price, description, url};
         addProduct(product);
-
+        history.push('/');
     };
 
     return (
-        <h1>The AddProduct component will be here</h1>
+        <form onSubmit={handleSubmit}>
+            <h1>Add New Product</h1>
+            <div className="form-group">
+                <label>Name</label>
+                <input type="text" onChange={e => setName(e.target.value)} className="form-control"/>
+            </div>
+            <div className="form-group">
+                <label>Price</label>
+                <input type="text" onChange={e => setPrice(e.target.value)} className="form-control"/>
+            </div>
+            <div className="form-group">
+                <label>Description</label>
+                <input type="text" onChange={e => setDescription(e.target.value)} className="form-control"/>
+            </div>
+            <div className="form-group">
+                <label>Image URL</label>
+                <input type="text" onChange={e => setUrl(e.target.value)} className="form-control"/>
+            </div>
+            <button className="btn btn-primary" type="submit">Add</button>
+        </form>
     )
 };
 
